@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "template_version": 0
+  },
+  "fixtures": [
+    {
+      "name": "prod_developer",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Developer",
+        "type": "service",
+        "description": "Developer plans are great to learn our product.",
+        "metadata": {
+          "id": "prod_KJ8Tk6Jlqvf1Sf"
+        }
+      }
+    },
+    {
+      "name": "price_developer_month",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_developer:id}",
+        "unit_amount_decimal": "1000",
+        "recurring": {
+          "interval": "month",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "expand": ["tiers"]
+      }
+    },
+    {
+      "name": "price_developer_annual",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_developer:id}",
+        "unit_amount_decimal": "12000",
+        "recurring": {
+          "interval": "year",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "expand": ["tiers"]
+      }
+    },
+    {
+      "name": "prod_startup",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Startup",
+        "type": "service",
+        "description": "All the basics for starting a new business!",
+        "metadata": {
+          "id": "prod_KJ8Tk6Jlqvdswa"
+        }
+      }
+    },
+    {
+      "name": "price_startup_month",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_startup:id}",
+        "unit_amount_decimal": "2000",
+        "recurring": {
+          "interval": "month",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "expand": ["tiers"]
+      }
+    },
+    {
+      "name": "price_startup_annual",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_startup:id}",
+        "unit_amount_decimal": "24000",
+        "recurring": {
+          "interval": "year",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "expand": ["tiers"]
+      }
+    },
+    {
+      "name": "prod_enterprise",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Enterprise",
+        "type": "service",
+        "description": "24/7 support, and an account manager!",
+        "metadata": {
+          "id": "prod_KJ8Tk6Jlqvgfts"
+        }
+      }
+    },
+    {
+      "name": "price_enterprise_month",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_enterprise:id}",
+        "unit_amount_decimal": "4000",
+        "recurring": {
+          "interval": "month",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "expand": ["tiers"]
+      }
+    },
+    {
+      "name": "price_enterprise_annual",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_enterprise:id}",
+        "unit_amount_decimal": "48000",
+        "recurring": {
+          "interval": "year",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd",
+        "billing_scheme": "per_unit",
+        "expand": ["tiers"]
+      }
+    }
+  ]
+}

@@ -113,7 +113,7 @@ export default function Pricing({ products }) {
                   {
                     'border border-pink': subscription
                       ? product.name === subscription?.prices?.products.name
-                      : product.name === 'Freelancer'
+                      : product.name === 'Startup'
                   }
                 )}
               >

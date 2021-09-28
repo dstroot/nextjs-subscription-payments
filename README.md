@@ -92,6 +92,8 @@ For example, you can create business models with different pricing tiers, e.g.:
   - Price 1: 20 USD per month
   - Price 2: 200 USD per year
 
+Or, you can use the the [Stripe CLI](https://stripe.com/docs/stripe-cli#install) `fixtures` command executes a series of API requests defined in a JSON file. To speed up the setup, we have added a [fixtures file](fixtures/stripe-fixtures.json) to bootstrap test product and pricing data in your Stripe account. Simply run `stripe fixtures fixtures/stripe-fixtures.json`.
+
 ### Configure the Stripe customer portal
 
 1. Set your custom branding in the [settings](https://dashboard.stripe.com/settings/branding)
