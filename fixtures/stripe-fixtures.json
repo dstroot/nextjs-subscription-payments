@@ -9,66 +9,166 @@
       "method": "post",
       "params": {
         "name": "Hobby",
-        "description": "Hobby product description",
-        "metadata": {
-          "id": "prod_hobby"
-        }
+        "type": "service",
+        "description": "Our hobby plan is always free!"
       }
     },
     {
-      "name": "prod_freelancer",
+      "name": "price_hobby_month",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_hobby:id}",
+        "unit_amount_decimal": "0",
+        "recurring": {
+          "interval": "month",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd"
+      }
+    },
+    {
+      "name": "price_hobby_annual",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_hobby:id}",
+        "unit_amount_decimal": "0",
+        "recurring": {
+          "interval": "year",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd"
+      }
+    },
+    {
+      "name": "prod_developer",
       "path": "/v1/products",
       "method": "post",
       "params": {
-        "name": "Freelancer",
-        "description": "Freelancer product description",
-        "metadata": {
-          "id": "prod_freelancer"
-        }
+        "name": "Developer",
+        "type": "service",
+        "description": "Developer plans include support."
       }
     },
     {
-      "name": "plan_hobby",
-      "path": "/v1/plans",
+      "name": "price_developer_month",
+      "path": "/v1/prices",
       "method": "post",
       "params": {
-        "currency": "usd",
-        "interval": "month",
-        "amount": 1000,
-        "product": "${prod_hobby:id}"
+        "product": "${prod_developer:id}",
+        "unit_amount_decimal": "1000",
+        "recurring": {
+          "interval": "month",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd"
       }
     },
     {
-      "name": "plan_hobby",
-      "path": "/v1/plans",
+      "name": "price_developer_annual",
+      "path": "/v1/prices",
       "method": "post",
       "params": {
-        "currency": "usd",
-        "interval": "year",
-        "amount": 10000,
-        "product": "${prod_hobby:id}"
+        "product": "${prod_developer:id}",
+        "unit_amount_decimal": "12000",
+        "recurring": {
+          "interval": "year",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd"
       }
     },
     {
-      "name": "plan_freelancer",
-      "path": "/v1/plans",
+      "name": "prod_startup",
+      "path": "/v1/products",
       "method": "post",
       "params": {
-        "currency": "usd",
-        "interval": "month",
-        "amount": 2000,
-        "product": "${prod_freelancer:id}"
+        "name": "Startup",
+        "type": "service",
+        "description": "All you need for starting a new business!"
       }
     },
     {
-      "name": "plan_freelancer",
-      "path": "/v1/plans",
+      "name": "price_startup_month",
+      "path": "/v1/prices",
       "method": "post",
       "params": {
-        "currency": "usd",
-        "interval": "year",
-        "amount": 20000,
-        "product": "${prod_freelancer:id}"
+        "product": "${prod_startup:id}",
+        "unit_amount_decimal": "2000",
+        "recurring": {
+          "interval": "month",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd"
+      }
+    },
+    {
+      "name": "price_startup_annual",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_startup:id}",
+        "unit_amount_decimal": "24000",
+        "recurring": {
+          "interval": "year",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd"
+      }
+    },
+    {
+      "name": "prod_enterprise",
+      "path": "/v1/products",
+      "method": "post",
+      "params": {
+        "name": "Enterprise",
+        "type": "service",
+        "description": "An account manager and 24/7 support!"
+      }
+    },
+    {
+      "name": "price_enterprise_month",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_enterprise:id}",
+        "unit_amount_decimal": "4000",
+        "recurring": {
+          "interval": "month",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd"
+      }
+    },
+    {
+      "name": "price_enterprise_annual",
+      "path": "/v1/prices",
+      "method": "post",
+      "params": {
+        "product": "${prod_enterprise:id}",
+        "unit_amount_decimal": "48000",
+        "recurring": {
+          "interval": "year",
+          "interval_count": "1",
+          "trial_period_days": "0",
+          "usage_type": "licensed"
+        },
+        "currency": "usd"
       }
     }
   ]
