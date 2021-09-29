@@ -46,21 +46,21 @@
       }
     },
     {
-      "name": "prod_developer",
+      "name": "prod_freelancer",
       "path": "/v1/products",
       "method": "post",
       "params": {
-        "name": "Developer",
+        "name": "Freelancer",
         "type": "service",
-        "description": "Developer plans include support."
+        "description": "Freelancer plans include support."
       }
     },
     {
-      "name": "price_developer_month",
+      "name": "price_freelancer_month",
       "path": "/v1/prices",
       "method": "post",
       "params": {
-        "product": "${prod_developer:id}",
+        "product": "${prod_freelancer:id}",
         "unit_amount_decimal": "1000",
         "recurring": {
           "interval": "month",
@@ -72,11 +72,11 @@
       }
     },
     {
-      "name": "price_developer_annual",
+      "name": "price_freelancer_annual",
       "path": "/v1/prices",
       "method": "post",
       "params": {
-        "product": "${prod_developer:id}",
+        "product": "${prod_freelancer:id}",
         "unit_amount_decimal": "12000",
         "recurring": {
           "interval": "year",
