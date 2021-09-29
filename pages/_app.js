@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import '@/assets/main.css';
-import '@/assets/chrome-bug.css';
+import '@/styles/main.css';
+import '@/styles/chrome-bug.css';
 
 import Layout from '@/components/Layout';
 import { UserContextProvider } from '@/utils/useUser';
