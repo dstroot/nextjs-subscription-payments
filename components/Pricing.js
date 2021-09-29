@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -8,10 +9,15 @@ import { getStripe } from '@/utils/stripe-client';
 import { useUser } from '@/utils/useUser';
 
 export default function Pricing({ products }) {
+  const month = useRef();
   const router = useRouter();
   const [billingInterval, setBillingInterval] = useState('month');
   const [priceIdLoading, setPriceIdLoading] = useState();
   const { session, userLoaded, subscription } = useUser();
+
+  useEffect(() => {
+    month.current.focus();
+  }, []);
 
   const handleCheckout = async (price) => {
     setPriceIdLoading(price.id);
@@ -28,6 +34,8 @@ export default function Pricing({ products }) {
         data: { price },
         token: session.access_token
       });
+
+      console.log(JSON.stringify(sessionId));
 
       const stripe = await getStripe();
       stripe.redirectToCheckout({ sessionId });
@@ -72,6 +80,7 @@ export default function Pricing({ products }) {
           </p>
           <div className="relative self-center mt-6 bg-primary-2 rounded-lg p-0.5 flex sm:mt-8 border border-accents-0">
             <button
+              ref={month}
               onClick={() => setBillingInterval('month')}
               type="button"
               className={`${
@@ -120,6 +129,11 @@ export default function Pricing({ products }) {
                 <div className="p-6">
                   <h2 className="text-2xl leading-6 font-semibold text-white">
                     {product.name}
+                    {product.name === 'Freelancer' ? (
+                      <span className="bg-pink2 text-white rounded-full text-sm px-3 float-right">
+                        Best
+                      </span>
+                    ) : null}
                   </h2>
                   <p className="mt-4 text-accents-5">{product.description}</p>
                   <p className="mt-8">
@@ -146,58 +160,6 @@ export default function Pricing({ products }) {
               </div>
             );
           })}
-        </div>
-        <div>
-          <p className="mt-24 text-xs uppercase text-accents-3 text-center font-bold tracking-widest">
-            Brought to you by
-          </p>
-          <div className="flex flex-col items-center my-12 space-y-4 sm:mt-8 sm:space-y-0 md:mx-auto md:max-w-2xl sm:grid sm:gap-6 sm:grid-cols-5">
-            <div className="flex items-center justify-start">
-              <a href="https://nextjs.org" aria-label="Next.js Link">
-                <img
-                  src="/nextjs.svg"
-                  alt="Next.js Logo"
-                  className="h-12 text-primary"
-                />
-              </a>
-            </div>
-            <div className="flex items-center justify-start">
-              <a href="https://vercel.com" aria-label="Vercel.com Link">
-                <img
-                  src="/vercel.svg"
-                  alt="Vercel.com Logo"
-                  className="h-6 text-primary"
-                />
-              </a>
-            </div>
-            <div className="flex items-center justify-start">
-              <a href="https://stripe.com" aria-label="stripe.com Link">
-                <img
-                  src="/stripe.svg"
-                  alt="stripe.com Logo"
-                  className="h-12 text-primary"
-                />
-              </a>
-            </div>
-            <div className="flex items-center justify-start">
-              <a href="https://supabase.io" aria-label="supabase.io Link">
-                <img
-                  src="/supabase.svg"
-                  alt="supabase.io Logo"
-                  className="h-10 text-primary"
-                />
-              </a>
-            </div>
-            <div className="flex items-center justify-start">
-              <a href="https://github.com" aria-label="github.com Link">
-                <img
-                  src="/github.svg"
-                  alt="github.com Logo"
-                  className="h-8 text-primary"
-                />
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
