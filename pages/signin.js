@@ -50,7 +50,7 @@ const SignIn = () => {
     if (user) {
       router.replace('/account');
     }
-  }, [user]);
+  }, [user, router]);
 
   if (!user)
     return (
@@ -137,7 +137,9 @@ const SignIn = () => {
             </span>
 
             <span className="pt-1 text-center text-sm">
-              <span className="text-accents-7">Don't have an account?</span>
+              <span className="text-accents-7">
+                Don&apos;t have an account?
+              </span>
               {` `}
               <Link href="/signup">
                 <a className="text-accent-9 font-bold hover:underline cursor-pointer">
